@@ -15,4 +15,4 @@ class Solution:
             res.append(symbol * count)
             num -= count * value
 
-        return ''.join(res)                
+        return ''.join(res)
