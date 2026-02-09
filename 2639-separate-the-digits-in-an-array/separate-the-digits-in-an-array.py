@@ -4,7 +4,6 @@ class Solution:
         def separate(num):
             for val in str(num):
                 res.append(int(val))
-            
         for num in nums:
             separate(num)
         return res
