@@ -1,4 +1,3 @@
-from bisect import bisect_left
 from collections import Counter
 import sys
 input = sys.stdin.readline
@@ -9,11 +8,12 @@ def solve():
     s_dict = Counter(s)
     t_dict = Counter(t)
 
-    diff = []
     for char in s_dict:
-        if char not in t_dict:
+        if s_dict[char] > t_dict[char]:
             print("Impossible")
             return
+        
+    diff = []
 
     for char in t_dict:
         if char not in s_dict:
