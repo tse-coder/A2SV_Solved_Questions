@@ -12,5 +12,4 @@ class Solution:
                     res.append(i+1)
                 else:
                     res.append((i+1)-sum(res))
-        print(final)
         return res
