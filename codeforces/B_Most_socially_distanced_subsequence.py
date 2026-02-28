@@ -4,7 +4,13 @@ input = sys.stdin.readline
 def solve():
     n = int(input())
     nums = list(map(int, input().split()))
-    
+    res = [nums[0]]
+    for i in range(1,n-1):
+        if ((nums[i] - nums[i-1]) * (nums[i+1] - nums[i])) < 0:
+            res.append(nums[i])
+    res.append(nums[-1])
+    print(len(res))
+    print(*res)
 
 if __name__ == '__main__':
     t = int(input())
