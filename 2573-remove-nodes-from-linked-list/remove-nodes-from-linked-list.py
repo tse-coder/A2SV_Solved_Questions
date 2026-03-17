@@ -4,26 +4,17 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def reverse(self,head):
-        prev = None
-        curr = head
-        while curr:
-            _next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = _next
-        return prev
-
     def removeNodes(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        head = self.reverse(head)
-        temp = head
-        while temp and temp.next:
-            if temp.next.val < temp.val:
-                trash = temp.next
-                temp.next = temp.next.next
-                del trash
+        def helper(node):
+            if node.next == None:
+                return node
+            _next = helper(node.next)
+            if node.val >= _next.val:
+                temp = node
+                newNode = ListNode(node.val,_next)
+                del temp 
+                return newNode
             else:
-                temp = temp.next
-        
-        head = self.reverse(head)
-        return head
+                return _next
+        return helper(head)
+            
