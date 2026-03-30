@@ -1,7 +1,7 @@
 class Solution:
     def removeInvalidParentheses(self, s: str) -> List[str]:
         s = list(s)
-        res = []
+        res = set()
         min_diff = len(s)
         def removePar(i,o,c,path):
             nonlocal min_diff, res
@@ -10,10 +10,10 @@ class Solution:
                     return
                 len_diff = len(s) - len(path)
                 if len_diff < min_diff:
-                    res = ["".join(path)]
+                    res = set(["".join(path)])
                     min_diff = len_diff
                 elif len_diff == min_diff:
-                    res.append("".join(path))
+                    res.add("".join(path))
                 return
             if c > o:
                 return
@@ -26,4 +26,4 @@ class Solution:
             else:
                 removePar(i+1,o,c,path+[s[i]])
         removePar(0,0,0,[])
-        return res
+        return list(res)
