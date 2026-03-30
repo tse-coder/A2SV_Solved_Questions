@@ -1,18 +1,19 @@
 class Solution:
     def getHappyString(self, n: int, k: int) -> str:
-        total = 3 * (2**(n-1))
-        if k > total:
-            return ""
         res = []
-        last= ""
-        k -= 1
+        choices = ["a","b","c"]
+        def backtrack(path):
+            if len(path) == n:
+                res.append("".join(path))
+                return
+            for ch in choices:
+                if path and path[-1] == ch:
+                    continue
+                path.append(ch)
+                backtrack(path)
+                path.pop()
+        backtrack([])
         
-        for pos in range(n):
-            branch = 2 ** (n-pos-1)
-            chars = [c for c in "abc" if c!=last]
-            idx = k//branch
-            res.append(chars[idx])
-            last = chars[idx]
-            k %= branch
+        return "" if k > len(res) else res[k-1]
+            
         
-        return "".join(res)
