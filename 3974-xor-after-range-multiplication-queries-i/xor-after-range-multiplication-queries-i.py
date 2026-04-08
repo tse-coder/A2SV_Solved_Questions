@@ -8,6 +8,6 @@ class Solution:
                 idx += k
         
         res = nums[0]
-        for num in nums[1:]:
-            res ^= num
+        for i in range(1,len(nums)):
+            res ^= nums[i]
         return res
