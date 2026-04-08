@@ -1,10 +1,10 @@
 class Solution:
     def xorAfterQueries(self, nums: List[int], queries: List[List[int]]) -> int:
-        for query in queries:
-            l,r,k,v = query
+        MOD = (10**9 + 7)
+        for l,r,k,v in queries:
             idx = l
             while idx <= r and idx < len(nums):
-                nums[idx] = (nums[idx] * v) % (10**9 + 7)
+                nums[idx] = (nums[idx] * v) % MOD
                 idx += k
         
         res = nums[0]
