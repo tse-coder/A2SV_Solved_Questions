@@ -1,16 +1,9 @@
 class Solution:
     def findDuplicate(self, nums: List[int]) -> int:
-        l,r = 1,len(nums)
-        while l < r:
-            m = (l+r)//2
-            cnt = 0
-            for i in range(len(nums)):
-                if nums[i] <= m:
-                    cnt += 1
-            if cnt > m:
-                r = m
+        visited = set()
+        for num in nums:
+            if num not in visited:
+                visited.add(num)
             else:
-                l = m + 1
-
-        return l
-                
+                return num
+        return len(nums)
