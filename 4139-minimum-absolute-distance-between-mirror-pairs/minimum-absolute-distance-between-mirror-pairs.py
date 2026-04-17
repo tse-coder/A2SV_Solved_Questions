@@ -1,7 +1,6 @@
 class Solution:
     def minMirrorPairDistance(self, nums: List[int]) -> int:
         nums = list(map(str,nums))
-        mirror_pairs = []
         reverse_map = dict()
         ans = float("inf")
         for i,num in enumerate(nums):
