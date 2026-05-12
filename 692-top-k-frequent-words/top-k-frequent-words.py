@@ -6,9 +6,6 @@ class ReverseStr:
     def __lt__(self, other):
         return self.val > other.val
     
-    def __gt__(self,other):
-        return self.val < other.val
-    
     def __repr__(self):
         return repr(self.val)
 
